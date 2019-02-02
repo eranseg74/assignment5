@@ -2,26 +2,26 @@
 
 A simple environment for practicing unit tests
 
-In this project we use a lib.js file to hold simple functions which will be tested.
+In this project we use a ```lib.js``` file to hold simple functions which will be tested.
 
-The functions are:
+##The functions are:##
 
-1. factorial - Expects a number as an input. The function returns the factorial of a given number (example - factorial(5) == 1*2*3*4*5 = 120).
+1. *factorial* - Expects a number as an input. The function returns the factorial of a given number (example - ```factorial(5) == 1*2*3*4*5 = 120```).
 
-2. palindrome - Expects a string as an input. The function returns true if the given string or number is a palindrome, otherwise a false is returned.
+2. *palindrome* - Expects a string as an input. The function returns ```true``` if the given string or number is a palindrome, otherwise a ```false``` is returned.
 
-3. randomString - Expects a number indicating the string's length. The function generates a string containing only letters ([a-z], [A-Z]) and numbers ([0-9]).
+3. *randomString* - Expects a number indicating the string's length. The function generates a string containing only letters (```[a-z], [A-Z]```) and numbers (```[0-9]```).
 
-4. shift - Expects a string and a number to indicate the desired number of shifts. The function returns a shifted string.
-A positive number will shift the string to the right.
-A Negative number will shift the string to the left.
-A value of zero will return the string as is with no shifts.
+4. *shift* - Expects a string and a number to indicate the desired number of shifts. The function returns a shifted string.
+A **positive number** will shift the string to the **right**.
+A **Negative number** will shift the string to the **left**.
+A value of **zero** will return the string as is with **no shifts**.
 
-5. sort - Expects a string as an input. The function returns a sorted string in an ascending order.
+5. *sort* - Expects a string as an input. The function returns a sorted string in an ascending order.
 
-unit.js
+#unit.js#
 
-contains all the tests for all the functions:
+##contains all the tests for all the functions:##
 
 1. Assert that the factorial function is returning the factorial of the given number.
 
