@@ -29,9 +29,9 @@ lib.palindrome = (input) => {
    const str = typeof(input) == 'number' ? input.toString() : input;
    let i = 0;
    const len = str.length;
-   while(str.charAt(i) == str.charAt(len - i)) {
+   while(str.charAt(i) == str.charAt(len - i - 1)) {
      i++
-     if(i == len - i || i + 1 == len - i) {
+     if(i == len - i - 1  || i + 1 == len - i - 1) {
        return true;
      }
    }
@@ -41,44 +41,50 @@ lib.palindrome = (input) => {
 
 // RandomString - Gets a number representing the length of a string and generates a random string using only letters [a-z, A-Z] and numbers [0-9]. if the given input is not a number or its value is not greater then 0 then a false is returned. otherwise, the string itself is returned.
 lib.randomString = (strLen) => {
-  let str = typeof(strLen == 'number') && strLen > 0 ? '' : false;
-  if(str) {
+  let str = typeof(strLen) == 'number' && strLen > 0 ? "" : false;
+  if(str == "") {
     const availableCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    while(strLen > 0) {
-      str += availableCharacters.indexOf(Math.floor(Math.random()*availableCharacters.length));
+    let charArr = [];
+    for(let i = 0; i < strLen; i++) {
+      charArr[i] = availableCharacters.charAt(Math.floor(Math.random()*availableCharacters.length));
     }
+    str = charArr.toString().replace(/,/g,'');
   }
   return str;
 };
 
 // Shifted - Gets a string and a number as inputs and shifts the string according to the given number. positive number will shift the string to the right, negative number will shift the string to the left, and zero will return the string with no changes. On invalid inputs a false is returned.
-lib.shifted = (str, shiftLen) => {
+lib.shift = (str, shiftLen) => {
   let shiftedStr = typeof(str) == 'string' && typeof(shiftLen) == 'number' ? str : false;
   if(shiftLen < 0) {
-    shiftedStr = str.slice(shiftLen, str.length-1) + str.slice(0, shiftLen-1);
+    shiftLen *= -1;
+    shiftedStr = str.slice(shiftLen) + str.slice(0, shiftLen);
   }
-  if(shiftLen > 0) {
-    shiftedStr = str.slice(str.length-shiftLen, str.length-1) + str.slice(0, shiftLen-shiftLen-1);
+  else if(shiftLen > 0) {
+    shiftedStr = str.slice(str.length-shiftLen) + str.slice(0, str.length-shiftLen);
   }
   return shiftedStr;
 };
 
 // Sorted - Gets a string as an input and returns a new string with characters sorted in an ascending order. the string must contain at least one character
-lib.sorted = (str) => {
+lib.sort = (str) => {
   str = typeof(str) == 'string' && str.length > 0 ? str : false;
+  let charArray = [];
   if(str) {
-    let index = 0;
-    for(let i = 1; i < str.length; i++) {
+    for(let i = 0; i < str.length; i++) {
+      charArray[i] = str.charAt(i);
+    }
+    for(i = 1; i < charArray.length; i++) {
       let j = i;
-      while(str.charAt(j) < str.charAt(j-1) && j > 0) {
-        const tmp = str.charAt(j-1);
-        str.charAt(j-1) = str.charAt(j);
-        str.charAt(j) == tmp;
+      while(j > 0 && charArray[j] < charArray[j-1]) {
+        const tmp = charArray[j-1];
+        charArray[j-1] = charArray[j];
+        charArray[j] = tmp;
         j--;
       }
     }
   }
-  return str;
+  return charArray.toString().replace(/,/g,'');
 };
 
 // Export the module
