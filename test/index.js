@@ -14,7 +14,6 @@ _lib.tests = {};
 
 // Add on the unit tests
 _lib.tests.unit = require('./unit');
-_lib.tests.api = require('./api');
 
 // Count all the tests
 _lib.countTests = () => {

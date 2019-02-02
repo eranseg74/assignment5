@@ -13,7 +13,7 @@ lib.factorial = (input) => {
       return 0;
     } else {
       let res = 1;
-      for(let i = 1; i < input; i++) {
+      for(let i = 1; i <= input; i++) {
         res *= i;
       }
       return res;
